@@ -1,0 +1,49 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.now {
+    font-size: 30px;
+    font-weight: bold;
+    font-style: oblique;
+    text-decoration: line-through;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+}
+#word {
+    font-size: 50px;
+    text-shadow: 5px 5px 10px gold;
+    text-align: center;
+    
+}
+
+#word {
+  font-family: "Mulish", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+.btn{
+    color: white;
+    cursor: pointer;
+    border: none;
+    font-size: 100px;
+    background-color: black;
+    text-align: center;
+}
+.btn:hover{
+    background-color: aquamarine;
+    padding: auto;
+    color: yellow;
+    scale: 0.5;
+
+}
+.btn:active{
+    background-color: blue;
+}
+.fwd{
+    text-align: center;
+}
+
+     
