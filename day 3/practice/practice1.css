@@ -1,0 +1,25 @@
+.square {
+  height: 250px;
+  width: 250px;
+  background-color: lightblue;
+  border-width: 2px;
+  border-style: solid;
+  border: 100px groove rgb(0, 0, 0);
+  &:hover {
+    background-color: rgb(255, 255, 255);
+  }
+}
+#title {
+    color: aliceblue;
+    background-color: black;
+    width: 120px;
+    font-size: 20px;
+    padding: 10px 50px 200px;
+}
+.btn{
+    font-size: large;
+    background-color: rgb(0, 255, 42);
+    padding: 10px 30px;
+    margin-top: 10px;
+    margin-left: 0px;
+}
