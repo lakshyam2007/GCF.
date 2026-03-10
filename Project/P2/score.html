@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CricketLive - Live Scores Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link id="heading-font-link"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link id="body-font-link" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
+    <link rel="stylesheet" href="score.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: {
+                            50: '#f8f9fa',
+                            900: '#0f1014',
+                            800: '#16181f',
+                            700: '#1c1f2a',
+                        },
+                        primary: {
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                        },
+                        neutral: {
+                            50: '#ffffff',
+                            100: '#e5e7eb',
+                            200: '#d1d5db',
+                            300: '#9ca3af',
+                            400: '#6b7280',
+                            500: '#6b7280',
+                            600: '#4b5563',
+                            700: '#374151',
+                            800: '#1f2937',
+                            900: '#111827',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['var(--font-heading-name)', 'sans-serif'],
+                        body: ['var(--font-body-name)', 'sans-serif'],
+                    },
+                    spacing: {
+                        base: 'var(--space-base)',
+                    },
+                    borderRadius: {
+                        small: 'var(--radius-small)',
+                        large: 'var(--radius-large)',
+                    },
+                    boxShadow: {
+                        custom: 'var(--shadow-custom)',
+                        'custom-hover': 'var(--shadow-custom-hover)',
+                    },
+                    backgroundImage: {
+                        'hero-gradient': 'linear-gradient(to right, #0f1014 0%, rgba(15, 16, 20, 0.8) 40%, rgba(15, 16, 20, 0) 100%)',
+                        'hero-gradient-bottom': 'linear-gradient(to top, #0f1014 0%, transparent 100%)',
+                        'card-gradient': 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+
+</head>
+
+<body class="font-body bg-background-900 text-neutral-100" style="height: auto; min-height: 100%;">
+
+    <div class="flex" style="height: auto; min-height: 100%;">
+
+
+        <aside class="hidden lg:flex flex-col w-20 bg-background-800 border-r border-neutral-800 flex-shrink-0">
+            <div class="flex flex-col h-full px-4 py-6">
+
+                <div class="mb-10 flex items-center justify-center">
+                    <div class="w-10 h-10 bg-primary-600 rounded-large flex items-center justify-center">
+                        <i data-lucide="activity" class="w-5 h-5 text-white"></i>
+                    </div>
+                </div>
+
+
+                <nav class="flex-1 flex flex-col items-center space-y-6">
+                    <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/live-scores-home"
+                        class="flex flex-col items-center text-primary-500 group" title="Live Scores">
+                        <div class="w-10 h-10 bg-primary-600/20 rounded-large flex items-center justify-center">
+                            <i data-lucide="radio" class="w-5 h-5 text-primary-500"></i>
+                        </div>
+                        <span class="text-[9px] mt-1 font-medium text-primary-500">Live</span>
+                    </a>
+                    <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/match-scorecard"
+                        class="flex flex-col items-center text-neutral-400 hover:text-neutral-100 group"
+                        title="Scorecard">
+                        <div class="w-10 h-10 rounded-large flex items-center justify-center hover:bg-neutral-800">
+                            <i data-lucide="clipboard-list" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-[9px] mt-1 font-medium">Scorecard</span>
+                    </a>
+                    <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/team-rankings-stats"
+                        class="flex flex-col items-center text-neutral-400 hover:text-neutral-100 group"
+                        title="Rankings">
+                        <div class="w-10 h-10 rounded-large flex items-center justify-center hover:bg-neutral-800">
+                            <i data-lucide="bar-chart-2" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-[9px] mt-1 font-medium">Rankings</span>
+                    </a>
+                    <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/player-profile"
+                        class="flex flex-col items-center text-neutral-400 hover:text-neutral-100 group"
+                        title="Players">
+                        <div class="w-10 h-10 rounded-large flex items-center justify-center hover:bg-neutral-800">
+                            <i data-lucide="user" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-[9px] mt-1 font-medium">Players</span>
+                    </a>
+                    <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/news-highlights"
+                        class="flex flex-col items-center text-neutral-400 hover:text-neutral-100 group" title="News">
+                        <div class="w-10 h-10 rounded-large flex items-center justify-center hover:bg-neutral-800">
+                            <i data-lucide="newspaper" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-[9px] mt-1 font-medium">News</span>
+                    </a>
+                </nav>
+
+
+                <div class="flex flex-col items-center mt-6">
+                    <div class="w-9 h-9 rounded-full bg-neutral-700 overflow-hidden border-2 border-neutral-600">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop"
+                            alt="User" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+
+        <main class="flex-1 overflow-x-hidden" style="height: auto;">
+
+
+            <header
+                class="sticky top-0 z-40 bg-background-900/95 backdrop-blur-md border-b border-neutral-800 px-4 md:px-8 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="lg:hidden w-8 h-8 bg-primary-600 rounded-small flex items-center justify-center">
+                        <i data-lucide="activity" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-heading font-bold text-lg text-neutral-50 leading-tight">CricketLive</h1>
+                        <p class="text-xs text-neutral-400 hidden sm:block">Real-time scores & updates</p>
+                    </div>
+                </div>
+
+
+                <div
+                    class="hidden md:flex items-center bg-background-800 border border-neutral-700 rounded-large px-4 py-2 w-72">
+                    <i data-lucide="search" class="w-4 h-4 text-neutral-400 mr-2 flex-shrink-0"></i>
+                    <input type="text" placeholder="Search teams, players, series..."
+                        class="bg-transparent text-sm text-neutral-300 placeholder-neutral-500 outline-none w-full">
+                </div>
+
+                <div class="flex items-center space-x-3">
+                    <button
+                        class="w-9 h-9 rounded-large bg-background-800 border border-neutral-700 flex items-center justify-center hover:bg-neutral-800 transition-colors">
+                        <i data-lucide="bell" class="w-4 h-4 text-neutral-300"></i>
+                    </button>
+                    <button
+                        class="md:hidden w-9 h-9 rounded-large bg-background-800 border border-neutral-700 flex items-center justify-center">
+                        <i data-lucide="search" class="w-4 h-4 text-neutral-300"></i>
+                    </button>
+                    <div
+                        class="w-9 h-9 rounded-full bg-neutral-700 overflow-hidden border-2 border-neutral-600 lg:hidden">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop"
+                            alt="User" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </header>
+
+
+            <div class="bg-background-900 border-b border-neutral-800 px-4 md:px-8">
+                <div class="flex space-x-6 overflow-x-auto no-scrollbar">
+                    <button
+                        class="tab-active py-3 text-sm font-semibold whitespace-nowrap text-neutral-50 border-b-2 border-primary-500">All
+                        Matches</button>
+                    <button
+                        class="py-3 text-sm font-medium whitespace-nowrap text-neutral-400 hover:text-neutral-200 border-b-2 border-transparent">Test</button>
+                    <button
+                        class="py-3 text-sm font-medium whitespace-nowrap text-neutral-400 hover:text-neutral-200 border-b-2 border-transparent">ODI</button>
+                    <button
+                        class="py-3 text-sm font-medium whitespace-nowrap text-neutral-400 hover:text-neutral-200 border-b-2 border-transparent">T20I</button>
+                    <button
+                        class="py-3 text-sm font-medium whitespace-nowrap text-neutral-400 hover:text-neutral-200 border-b-2 border-transparent">IPL
+                        2024</button>
+                    <button
+                        class="py-3 text-sm font-medium whitespace-nowrap text-neutral-400 hover:text-neutral-200 border-b-2 border-transparent">World
+                        Cup</button>
+                    <button
+                        class="py-3 text-sm font-medium whitespace-nowrap text-neutral-400 hover:text-neutral-200 border-b-2 border-transparent">Women's</button>
+                </div>
+            </div>
+
+            <div class="px-4 md:px-8 py-6 space-y-8">
+
+
+                <section>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 rounded-full bg-red-500 live-pulse"></div>
+                            <h2 class="font-heading font-bold text-lg text-neutral-50">Live Now</h2>
+                            <span
+                                class="bg-red-500/20 text-red-400 text-xs font-bold px-2 py-0.5 rounded-small border border-red-500/30">3
+                                LIVE</span>
+                        </div>
+                        <button class="text-primary-500 text-sm font-medium hover:text-primary-400">View All</button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+
+
+                        <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/match-scorecard"
+                            class="block md:col-span-2 xl:col-span-1 bg-background-800 border border-neutral-700 rounded-large overflow-hidden match-card-hover cursor-pointer shadow-custom">
+                            <div class="relative h-28 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=800&auto=format&fit=crop"
+                                    alt="Cricket Stadium" class="w-full h-full object-cover opacity-40">
+                                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-background-800"></div>
+                                <div class="absolute top-3 left-3 flex items-center space-x-2">
+                                    <div class="flex items-center space-x-1 bg-red-500 px-2 py-0.5 rounded-small">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-white live-pulse"></div>
+                                        <span class="text-white text-xs font-bold">LIVE</span>
+                                    </div>
+                                    <span
+                                        class="bg-background-900/80 text-neutral-300 text-xs px-2 py-0.5 rounded-small">T20I
+                                        • 3rd Match</span>
+                                </div>
+                                <div class="absolute top-3 right-3">
+                                    <span
+                                        class="bg-background-900/80 text-neutral-300 text-xs px-2 py-0.5 rounded-small">Wankhede
+                                        Stadium</span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <p class="text-xs text-neutral-400 mb-3">India vs Australia • 3rd T20I</p>
+
+                                <div class="space-y-3">
+
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <div
+                                                class="w-8 h-8 rounded-full overflow-hidden border border-neutral-600 flex-shrink-0">
+                                                <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?q=80&w=100&auto=format&fit=crop"
+                                                    alt="India" class="w-full h-full object-cover">
+                                            </div>
+                                            <div>
+                                                <p class="font-heading font-semibold text-sm text-neutral-50">India</p>
+                                                <p class="text-xs text-neutral-400">Batting</p>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="font-heading font-bold text-xl text-neutral-50">186/4</p>
+                                            <p class="text-xs text-neutral-400">18.2 ov</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center justify-between opacity-60">
+                                        <div class="flex items-center space-x-3">
+                                            <div
+                                                class="w-8 h-8 rounded-full overflow-hidden border border-neutral-600 flex-shrink-0 bg-yellow-500/20 flex items-center justify-center">
+                                                <span class="text-yellow-400 font-bold text-xs">AUS</span>
+                                            </div>
+                                            <div>
+                                                <p class="font-heading font-semibold text-sm text-neutral-200">Australia
+                                                </p>
+                                                <p class="text-xs text-neutral-500">Yet to bat</p>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="font-heading font-bold text-xl text-neutral-300">—</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-3 pt-3 border-t border-neutral-700 flex items-center justify-between">
+                                    <div class="flex items-center space-x-4">
+                                        <div>
+                                            <p class="text-xs text-neutral-500">CRR</p>
+                                            <p class="text-sm font-semibold text-green-400">10.14</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-neutral-500">RRR</p>
+                                            <p class="text-sm font-semibold text-orange-400">—</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-neutral-500">Last 5 ov</p>
+                                            <p class="text-sm font-semibold text-neutral-200">62 runs</p>
+                                        </div>
+                                    </div>
+                                    <span
+                                        class="text-xs text-green-400 font-medium bg-green-400/10 px-2 py-1 rounded-small border border-green-400/20">IND
+                                        need 2 balls</span>
+                                </div>
+                            </div>
+                        </a>
+
+
+                        <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/match-scorecard"
+                            class="block bg-background-800 border border-neutral-700 rounded-large overflow-hidden match-card-hover cursor-pointer shadow-custom">
+                            <div class="p-4">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="flex items-center space-x-1 bg-red-500 px-2 py-0.5 rounded-small">
+                                            <div class="w-1.5 h-1.5 rounded-full bg-white live-pulse"></div>
+                                            <span class="text-white text-xs font-bold">LIVE</span>
+                                        </div>
+                                        <span class="text-neutral-400 text-xs">ODI • 2nd Match</span>
+                                    </div>
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-neutral-500"></i>
+                                </div>
+                                <p class="text-xs text-neutral-400 mb-4">England vs Pakistan • Lord's, London</p>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-blue-600/20 border border-blue-500/40 flex items-center justify-center flex-shrink-0">
+                                                <span class="text-blue-400 font-bold text-xs">ENG</span>
+                                            </div>
+                                            <p class="font-heading font-semibold text-sm text-neutral-50">England</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="font-heading font-bold text-lg text-neutral-50">312/7</p>
+                                            <p class="text-xs text-neutral-400">50 ov</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-green-600/20 border border-green-500/40 flex items-center justify-center flex-shrink-0">
+                                                <span class="text-green-400 font-bold text-xs">PAK</span>
+                                            </div>
+                                            <p class="font-heading font-semibold text-sm text-neutral-50">Pakistan</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="font-heading font-bold text-lg text-neutral-50">198/4</p>
+                                            <p class="text-xs text-neutral-400">35.2 ov</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 pt-3 border-t border-neutral-700 flex items-center justify-between">
+                                    <div class="flex items-center space-x-4">
+                                        <div>
+                                            <p class="text-xs text-neutral-500">CRR</p>
+                                            <p class="text-sm font-semibold text-green-400">5.61</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-neutral-500">RRR</p>
+                                            <p class="text-sm font-semibold text-orange-400">7.82</p>
+                                        </div>
+                                    </div>
+                                    <span
+                                        class="text-xs text-orange-400 font-medium bg-orange-400/10 px-2 py-1 rounded-small border border-orange-400/20">PAK
+                                        need 115 (88b)</span>
+                                </div>
+                            </div>
+                        </a>
+
+
+                        <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/match-scorecard"
+                            class="block bg-background-800 border border-neutral-700 rounded-large overflow-hidden match-card-hover cursor-pointer shadow-custom">
+                            <div class="p-4">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="flex items-center space-x-1 bg-red-500 px-2 py-0.5 rounded-small">
+                                            <div class="w-1.5 h-1.5 rounded-full bg-white live-pulse"></div>
+                                            <span class="text-white text-xs font-bold">LIVE</span>
+                                        </div>
+                                        <span class="text-neutral-400 text-xs">Test • Day 3</span>
+                                    </div>
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-neutral-500"></i>
+                                </div>
+                                <p class="text-xs text-neutral-400 mb-4">South Africa vs New Zealand • Cape Town</p>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-yellow-600/20 border border-yellow-500/40 flex items-center justify-center flex-shrink-0">
+                                                <span class="text-yellow-400 font-bold text-xs">SA</span>
+                                            </div>
+                                            <div>
+                                                <p class="font-heading font-semibold text-sm text-neutral-50">South
+                                                    Africa</p>
+                                                <p class="text-xs text-neutral-400">1st Inn: 342</p>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="font-heading font-bold text-lg text-neutral-50">156/3</p>
+                                            <p class="text-xs text-neutral-400">2nd Inn • 42 ov</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between opacity-70">
+                                        <div class="flex items-center space-x-3">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-neutral-600/20 border border-neutral-500/40 flex items-center justify-center flex-shrink-0">
+                                                <span class="text-neutral-300 font-bold text-xs">NZ</span>
+                                            </div>
+                                            <div>
+                                                <p class="font-heading font-semibold text-sm text-neutral-200">New
+                                                    Zealand</p>
+                                                <p class="text-xs text-neutral-500">1st Inn: 289</p>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="font-heading font-bold text-lg text-neutral-300">—</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 pt-3 border-t border-neutral-700">
+                                    <p class="text-xs text-blue-400 font-medium">SA lead by 209 runs</p>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                </section>
+
+
+                <section>
+                    <div class="relative rounded-large overflow-hidden border border-neutral-700 shadow-custom">
+                        <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=1200&auto=format&fit=crop"
+                            alt="IPL 2024" class="w-full h-40 object-cover opacity-50">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-background-900 via-background-900/80 to-transparent flex items-center px-6">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span
+                                        class="bg-primary-600 text-white text-xs font-bold px-2 py-0.5 rounded-small">FEATURED</span>
+                                    <span class="text-neutral-400 text-xs">IPL 2024</span>
+                                </div>
+                                <h3 class="font-heading font-bold text-xl text-neutral-50 mb-1">Indian Premier League
+                                </h3>
+                                <p class="text-neutral-400 text-sm">10 teams • 74 matches • Playoffs starting May 21</p>
+                                <div class="flex items-center space-x-4 mt-3">
+                                    <div class="text-center">
+                                        <p class="font-heading font-bold text-lg text-neutral-50">58</p>
+                                        <p class="text-xs text-neutral-500">Matches Played</p>
+                                    </div>
+                                    <div class="w-px h-8 bg-neutral-700"></div>
+                                    <div class="text-center">
+                                        <p class="font-heading font-bold text-lg text-primary-500">16</p>
+                                        <p class="text-xs text-neutral-500">Remaining</p>
+                                    </div>
+                                    <div class="w-px h-8 bg-neutral-700"></div>
+                                    <div class="text-center">
+                                        <p class="font-heading font-bold text-lg text-green-400">MI</p>
+                                        <p class="text-xs text-neutral-500">Table Topper</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button
+                                class="hidden sm:flex items-center space-x-2 bg-primary-600 hover:bg-primary-500 text-white px-4 py-2 rounded-large text-sm font-semibold transition-colors flex-shrink-0">
+                                <i data-lucide="trophy" class="w-4 h-4"></i>
+                                <span>View Series</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section>
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="font-heading font-bold text-lg text-neutral-50">Upcoming Matches</h2>
+                        <button class="text-primary-500 text-sm font-medium hover:text-primary-400">View All</button>
+                    </div>
+
+                    <div class="space-y-3">
+
+
+                        <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/match-scorecard"
+                            class="block bg-background-800 border border-neutral-700 rounded-large p-4 match-card-hover cursor-pointer">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3 flex-1">
+                                    <div class="flex flex-col items-center space-y-1 w-16 flex-shrink-0">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-blue-600/20 border border-blue-500/40 flex items-center justify-center">
+                                            <span class="text-blue-400 font-bold text-xs">IND</span>
+                                        </div>
+                                        <p class="text-xs font-semibold text-neutral-200 text-center">India</p>
+                                    </div>
+                                    <div class="flex-1 text-center px-2">
+                                        <div class="bg-background-700 rounded-small px-3 py-1.5 inline-block">
+                                            <p class="text-xs text-neutral-400 font-medium">Tomorrow</p>
+                                            <p class="text-sm font-bold text-neutral-50">7:30 PM</p>
+                                            <p class="text-xs text-neutral-500">IST</p>
+                                        </div>
+                                        <p class="text-xs text-neutral-500 mt-1">T20I • 4th Match</p>
+                                    </div>
+                                    <div class="flex flex-col items-center space-y-1 w-16 flex-shrink-0">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-yellow-600/20 border border-yellow-500/40 flex items-center justify-center">
+                                            <span class="text-yellow-400 font-bold text-xs">AUS</span>
+                                        </div>
+                                        <p class="text-xs font-semibold text-neutral-200 text-center">Australia</p>
+                                    </div>
+                                </div>
+                                <div class="ml-4 flex flex-col items-end space-y-2">
+                                    <span
+                                        class="bg-blue-500/10 text-blue-400 text-xs font-medium px-2 py-0.5 rounded-small border border-blue-500/20">Upcoming</span>
+                                    <p class="text-xs text-neutral-500">Eden Gardens</p>
+                                </div>
+                            </div>
+                        </a>
+
+
+                        <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/match-scorecard"
+                            class="block bg-background-800 border border-neutral-700 rounded-large p-4 match-card-hover cursor-pointer">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3 flex-1">
+                                    <div class="flex flex-col items-center space-y-1 w-16 flex-shrink-0">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-red-600/20 border border-red-500/40 flex items-center justify-center">
+                                            <span class="text-red-400 font-bold text-xs">ENG</span>
+                                        </div>
+                                        <p class="text-xs font-semibold text-neutral-200 text-center">England</p>
+                                    </div>
+                                    <div class="flex-1 text-center px-2">
+                                        <div class="bg-background-700 rounded-small px-3 py-1.5 inline-block">
+                                            <p class="text-xs text-neutral-400 font-medium">May 22</p>
+                                            <p class="text-sm font-bold text-neutral-50">3:00 PM</p>
+                                            <p class="text-xs text-neutral-500">BST</p>
+                                        </div>
+                                        <p class="text-xs text-neutral-500 mt-1">Test • 1st Match</p>
+                                    </div>
+                                    <div class="flex flex-col items-center space-y-1 w-16 flex-shrink-0">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-green-600/20 border border-green-500/40 flex items-center justify-center">
+                                            <span class="text-green-400 font-bold text-xs">WI</span>
+                                        </div>
+                                        <p class="text-xs font-semibold text-neutral-200 text-center">West Indies</p>
+                                    </div>
+                                </div>
+                                <div class="ml-4 flex flex-col items-end space-y-2">
+                                    <span
+                                        class="bg-blue-500/10 text-blue-400 text-xs font-medium px-2 py-0.5 rounded-small border border-blue-500/20">Upcoming</span>
+                                    <p class="text-xs text-neutral-500">The Oval, London</p>
+                                </div>
+                            </div>
+                        </a>
+
+
+                        <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/match-scorecard"
+                            class="block bg-background-800 border border-neutral-700 rounded-large p-4 match-card-hover cursor-pointer">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3 flex-1">
+                                    <div class="flex flex-col items-center space-y-1 w-16 flex-shrink-0">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-purple-600/20 border border-purple-500/40 flex items-center justify-center">
+                                            <span class="text-purple-400 font-bold text-xs">SL</span>
+                                        </div>
+                                        <p class="text-xs font-semibold text-neutral-200 text-center">Sri Lanka</p>
+                                    </div>
+                                    <div class="flex-1 text-center px-2">
+                                        <div class="bg-background-700 rounded-small px-3 py-1.5 inline-block">
+                                            <p class="text-xs text-neutral-400 font-medium">May 24</p>
+                                            <p class="text-sm font-bold text-neutral-50">10:00 AM</p>
+                                            <p class="text-xs text-neutral-500">IST</p>
+                                        </div>
+                                        <p class="text-xs text-neutral-500 mt-1">ODI • 1st Match</p>
+                                    </div>
+                                    <div class="flex flex-col items-center space-y-1 w-16 flex-shrink-0">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-orange-600/20 border border-orange-500/40 flex items-center justify-center">
+                                            <span class="text-orange-400 font-bold text-xs">BAN</span>
+                                        </div>
+                                        <p class="text-xs font-semibold text-neutral-200 text-center">Bangladesh</p>
+                                    </div>
+                                </div>
+                                <div class="ml-4 flex flex-col items-end space-y-2">
+                                    <span
+                                        class="bg-blue-500/10 text-blue-400 text-xs font-medium px-2 py-0.5 rounded-small border border-blue-500/20">Upcoming</span>
+                                    <p class="text-xs text-neutral-500">R.Premadasa Stadium</p>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                </section>
+
+
+                <section>
+                    <h2 class="font-heading font-bold text-lg text-neutral-50 mb-4">Today's Highlights</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/player-profile"
+                            class="bg-background-800 border border-neutral-700 rounded-large p-4 hover:border-primary-500/50 transition-colors cursor-pointer">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <i data-lucide="zap" class="w-4 h-4 text-yellow-400"></i>
+                                <p class="text-xs text-neutral-400 font-medium">Top Scorer</p>
+                            </div>
+                            <p class="font-heading font-bold text-base text-neutral-50">V. Kohli</p>
+                            <p class="text-2xl font-bold text-yellow-400 font-heading">94*</p>
+                            <p class="text-xs text-neutral-500 mt-1">IND vs AUS</p>
+                        </a>
+                        <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/player-profile"
+                            class="bg-background-800 border border-neutral-700 rounded-large p-4 hover:border-primary-500/50 transition-colors cursor-pointer">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <i data-lucide="target" class="w-4 h-4 text-red-400"></i>
+                                <p class="text-xs text-neutral-400 font-medium">Best Bowler</p>
+                            </div>
+                            <p class="font-heading font-bold text-base text-neutral-50">J. Bumrah</p>
+                            <p class="text-2xl font-bold text-red-400 font-heading">4/22</p>
+                            <p class="text-xs text-neutral-500 mt-1">IND vs AUS</p>
+                        </a>
+                        <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/team-rankings-stats"
+                            class="bg-background-800 border border-neutral-700 rounded-large p-4 hover:border-primary-500/50 transition-colors cursor-pointer">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <i data-lucide="trending-up" class="w-4 h-4 text-green-400"></i>
+                                <p class="text-xs text-neutral-400 font-medium">ICC #1 T20</p>
+                            </div>
+                            <p class="font-heading font-bold text-base text-neutral-50">India</p>
+                            <p class="text-2xl font-bold text-green-400 font-heading">271</p>
+                            <p class="text-xs text-neutral-500 mt-1">Rating Points</p>
+                        </a>
+                        <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/news-highlights"
+                            class="bg-background-800 border border-neutral-700 rounded-large p-4 hover:border-primary-500/50 transition-colors cursor-pointer">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <i data-lucide="play-circle" class="w-4 h-4 text-primary-500"></i>
+                                <p class="text-xs text-neutral-400 font-medium">Highlights</p>
+                            </div>
+                            <p class="font-heading font-bold text-base text-neutral-50">3 New</p>
+                            <p class="text-2xl font-bold text-primary-500 font-heading">Videos</p>
+                            <p class="text-xs text-neutral-500 mt-1">Watch now</p>
+                        </a>
+                    </div>
+                </section>
+
+
+                <section>
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="font-heading font-bold text-lg text-neutral-50">Recent Results</h2>
+                        <button class="text-primary-500 text-sm font-medium hover:text-primary-400">View All</button>
+                    </div>
+
+                    <div class="space-y-3">
+
+
+                        <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/match-scorecard"
+                            class="block bg-background-800 border border-neutral-700 rounded-large p-4 match-card-hover cursor-pointer">
+                            <div class="flex items-center justify-between">
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-2">
+                                        <span
+                                            class="bg-neutral-700 text-neutral-300 text-xs px-2 py-0.5 rounded-small">T20I
+                                            • 2nd Match</span>
+                                        <span class="text-neutral-500 text-xs">May 18, 2024</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex items-center space-x-2">
+                                            <div
+                                                class="w-7 h-7 rounded-full bg-blue-600/20 border border-blue-500/40 flex items-center justify-center">
+                                                <span class="text-blue-400 font-bold text-[10px]">IND</span>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-semibold text-neutral-50">India</p>
+                                                <p class="text-xs font-bold text-neutral-200">201/4 (20)</p>
+                                            </div>
+                                        </div>
+                                        <div class="text-neutral-500 text-xs font-medium">vs</div>
+                                        <div class="flex items-center space-x-2">
+                                            <div
+                                                class="w-7 h-7 rounded-full bg-yellow-600/20 border border-yellow-500/40 flex items-center justify-center">
+                                                <span class="text-yellow-400 font-bold text-[10px]">AUS</span>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-semibold text-neutral-300">Australia</p>
+                                                <p class="text-xs text-neutral-400">178/8 (20)</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ml-4 text-right">
+                                    <span
+                                        class="bg-green-500/10 text-green-400 text-xs font-bold px-2 py-1 rounded-small border border-green-500/20 block mb-1">IND
+                                        Won</span>
+                                    <p class="text-xs text-neutral-500">by 23 runs</p>
+                                </div>
+                            </div>
+                        </a>
+
+
+                        <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/match-scorecard"
+                            class="block bg-background-800 border border-neutral-700 rounded-large p-4 match-card-hover cursor-pointer">
+                            <div class="flex items-center justify-between">
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-2">
+                                        <span
+                                            class="bg-neutral-700 text-neutral-300 text-xs px-2 py-0.5 rounded-small">ODI
+                                            • 1st Match</span>
+                                        <span class="text-neutral-500 text-xs">May 17, 2024</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex items-center space-x-2">
+                                            <div
+                                                class="w-7 h-7 rounded-full bg-red-600/20 border border-red-500/40 flex items-center justify-center">
+                                                <span class="text-red-400 font-bold text-[10px]">ENG</span>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-semibold text-neutral-300">England</p>
+                                                <p class="text-xs text-neutral-400">287/9 (50)</p>
+                                            </div>
+                                        </div>
+                                        <div class="text-neutral-500 text-xs font-medium">vs</div>
+                                        <div class="flex items-center space-x-2">
+                                            <div
+                                                class="w-7 h-7 rounded-full bg-green-600/20 border border-green-500/40 flex items-center justify-center">
+                                                <span class="text-green-400 font-bold text-[10px]">PAK</span>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-semibold text-neutral-50">Pakistan</p>
+                                                <p class="text-xs font-bold text-neutral-200">290/6 (49.3)</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ml-4 text-right">
+                                    <span
+                                        class="bg-green-500/10 text-green-400 text-xs font-bold px-2 py-1 rounded-small border border-green-500/20 block mb-1">PAK
+                                        Won</span>
+                                    <p class="text-xs text-neutral-500">by 4 wkts</p>
+                                </div>
+                            </div>
+                        </a>
+
+
+                        <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/match-scorecard"
+                            class="block bg-background-800 border border-neutral-700 rounded-large p-4 match-card-hover cursor-pointer">
+                            <div class="flex items-center justify-between">
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-2">
+                                        <span
+                                            class="bg-neutral-700 text-neutral-300 text-xs px-2 py-0.5 rounded-small">Test
+                                            • Day 5</span>
+                                        <span class="text-neutral-500 text-xs">May 16, 2024</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex items-center space-x-2">
+                                            <div
+                                                class="w-7 h-7 rounded-full bg-yellow-600/20 border border-yellow-500/40 flex items-center justify-center">
+                                                <span class="text-yellow-400 font-bold text-[10px]">SA</span>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-semibold text-neutral-300">South Africa</p>
+                                                <p class="text-xs text-neutral-400">342 & 198</p>
+                                            </div>
+                                        </div>
+                                        <div class="text-neutral-500 text-xs font-medium">vs</div>
+                                        <div class="flex items-center space-x-2">
+                                            <div
+                                                class="w-7 h-7 rounded-full bg-neutral-600/20 border border-neutral-500/40 flex items-center justify-center">
+                                                <span class="text-neutral-300 font-bold text-[10px]">NZ</span>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-semibold text-neutral-50">New Zealand</p>
+                                                <p class="text-xs font-bold text-neutral-200">289 & 254/7</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ml-4 text-right">
+                                    <span
+                                        class="bg-neutral-600/20 text-neutral-300 text-xs font-bold px-2 py-1 rounded-small border border-neutral-600/30 block mb-1">Draw</span>
+                                    <p class="text-xs text-neutral-500">Match drawn</p>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                </section>
+
+
+                <section class="pb-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="font-heading font-bold text-lg text-neutral-50">Latest News</h2>
+                        <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/news-highlights"
+                            class="text-primary-500 text-sm font-medium hover:text-primary-400">View All</a>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/news-highlights"
+                            class="block bg-background-800 border border-neutral-700 rounded-large overflow-hidden match-card-hover cursor-pointer group">
+                            <div class="relative h-36 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=600&auto=format&fit=crop"
+                                    alt="News 1"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <div class="absolute inset-0 bg-gradient-to-t from-background-800 to-transparent"></div>
+                                <span
+                                    class="absolute top-2 left-2 bg-primary-600 text-white text-xs font-bold px-2 py-0.5 rounded-small">BREAKING</span>
+                            </div>
+                            <div class="p-3">
+                                <p class="text-sm font-semibold text-neutral-100 line-clamp-2 leading-snug">Kohli
+                                    smashes 94* to guide India to series-leveling win against Australia</p>
+                                <p class="text-xs text-neutral-500 mt-2">2 hours ago • Cricket</p>
+                            </div>
+                        </a>
+                        <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/news-highlights"
+                            class="block bg-background-800 border border-neutral-700 rounded-large overflow-hidden match-card-hover cursor-pointer group">
+                            <div class="relative h-36 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=600&auto=format&fit=crop"
+                                    alt="News 2"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <div class="absolute inset-0 bg-gradient-to-t from-background-800 to-transparent"></div>
+                            </div>
+                            <div class="p-3">
+                                <p class="text-sm font-semibold text-neutral-100 line-clamp-2 leading-snug">IPL 2024:
+                                    Mumbai Indians clinch top spot with thrilling last-ball victory</p>
+                                <p class="text-xs text-neutral-500 mt-2">5 hours ago • IPL</p>
+                            </div>
+                        </a>
+                        <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/news-highlights"
+                            class="block bg-background-800 border border-neutral-700 rounded-large overflow-hidden match-card-hover cursor-pointer group">
+                            <div class="relative h-36 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=600&auto=format&fit=crop"
+                                    alt="News 3"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <div class="absolute inset-0 bg-gradient-to-t from-background-800 to-transparent"></div>
+                            </div>
+                            <div class="p-3">
+                                <p class="text-sm font-semibold text-neutral-100 line-clamp-2 leading-snug">ICC
+                                    announces T20 World Cup 2024 schedule: India vs Pakistan on June 9</p>
+                                <p class="text-xs text-neutral-500 mt-2">1 day ago • ICC</p>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+
+
+            <div
+                class="lg:hidden fixed bottom-0 left-0 right-0 bg-background-900/95 backdrop-blur-md border-t border-neutral-800 z-50 px-2 py-2 flex justify-around items-center">
+                <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/live-scores-home"
+                    class="flex flex-col items-center text-primary-500 px-3 py-1">
+                    <i data-lucide="radio" class="w-5 h-5"></i>
+                    <span class="text-[10px] mt-0.5 font-medium">Live</span>
+                </a>
+                <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/match-scorecard"
+                    class="flex flex-col items-center text-neutral-400 hover:text-neutral-100 px-3 py-1">
+                    <i data-lucide="clipboard-list" class="w-5 h-5"></i>
+                    <span class="text-[10px] mt-0.5">Scorecard</span>
+                </a>
+                <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/team-rankings-stats"
+                    class="flex flex-col items-center text-neutral-400 hover:text-neutral-100 px-3 py-1">
+                    <i data-lucide="bar-chart-2" class="w-5 h-5"></i>
+                    <span class="text-[10px] mt-0.5">Rankings</span>
+                </a>
+                <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/player-profile"
+                    class="flex flex-col items-center text-neutral-400 hover:text-neutral-100 px-3 py-1">
+                    <i data-lucide="user" class="w-5 h-5"></i>
+                    <span class="text-[10px] mt-0.5">Players</span>
+                </a>
+                <a href="/api/copilot/prototype/824fbd3d-5036-46e1-9051-502835c2a345/news-highlights"
+                    class="flex flex-col items-center text-neutral-400 hover:text-neutral-100 px-3 py-1">
+                    <i data-lucide="newspaper" class="w-5 h-5"></i>
+                    <span class="text-[10px] mt-0.5">News</span>
+                </a>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
